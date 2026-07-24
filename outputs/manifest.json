@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-07-21T09:25:45Z",
+  "folder": "10.1017_s0003055421001143",
+  "doi": "10.1017/s0003055421001143",
+  "prep": [],
+  "replications": {
+    "tab_3a": {
+      "status": "ok",
+      "artifact": "outputs/tab_3a.html",
+      "format": "html"
+    },
+    "tab_3b": {
+      "status": "ok",
+      "artifact": "outputs/tab_3b.html",
+      "format": "html"
+    },
+    "fig_1": {
+      "status": "ok",
+      "artifact": "outputs/fig_1.png",
+      "format": "ggplot"
+    },
+    "fig_2a": {
+      "status": "ok",
+      "artifact": "outputs/fig_2a.png",
+      "format": "ggplot"
+    },
+    "fig_2b": {
+      "status": "ok",
+      "artifact": "outputs/fig_2b.png",
+      "format": "ggplot"
+    },
+    "fig_2c": {
+      "status": "ok",
+      "artifact": "outputs/fig_2c.png",
+      "format": "ggplot"
+    },
+    "fig_3a": {
+      "status": "ok",
+      "artifact": "outputs/fig_3a.png",
+      "format": "ggplot"
+    },
+    "fig_3b": {
+      "status": "ok",
+      "artifact": "outputs/fig_3b.png",
+      "format": "ggplot"
+    },
+    "fig_3c": {
+      "status": "ok",
+      "artifact": "outputs/fig_3c.png",
+      "format": "ggplot"
+    },
+    "fig_4a": {
+      "status": "ok",
+      "artifact": "outputs/fig_4a.png",
+      "format": "ggplot"
+    },
+    "fig_4b": {
+      "status": "ok",
+      "artifact": "outputs/fig_4b.png",
+      "format": "ggplot"
+    },
+    "fig_5a": {
+      "status": "ok",
+      "artifact": "outputs/fig_5a.png",
+      "format": "ggplot"
+    },
+    "fig_5b": {
+      "status": "ok",
+      "artifact": "outputs/fig_5b.png",
+      "format": "ggplot"
+    },
+    "fig_6": {
+      "status": "ok",
+      "artifact": "outputs/fig_6.png",
+      "format": "ggplot"
+    },
+    "fig_7": {
+      "status": "ok",
+      "artifact": "outputs/fig_7.png",
+      "format": "ggplot"
+    }
+  },
+  "study_repo": "replicate-anything/rep-10.1017-s0003055421001143",
+  "study_folder": "rep-10.1017-s0003055421001143"
+}

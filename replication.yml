@@ -1,0 +1,258 @@
+maintainer:
+  name: 
+  email:
+
+collections:
+  - APSR
+
+languages:
+  - r
+
+paper:
+  doi: https://doi.org/10.1017/S0003055421001143
+  title: "Sovereignty, Substance, and Public Support for European Courts' Human Rights Rulings"
+  authors:
+    - Mikael Rask Madsen
+    - Juan Mayoral
+    - Anton Strezhnev
+    - Erik Voeten
+  journal: American Political Science Review
+  year: 2021
+  dependencies:
+    - dataverse
+    - httr
+    - tidyverse
+    - haven
+    - estimatr
+    - table1
+    - ggpubr
+    - knitr
+    - readr
+    - broom
+
+dataverse:
+  doi: https://doi.org/10.7910/DVN/WJQITU
+  server: dataverse.harvard.edu
+  dataset: "10.7910/DVN/WJQITU"
+  fetch: archive_original
+  manifest: manifest/dataverse_files.csv
+  deposit_root: outputs/deposit
+
+steps:
+  - id: access_deposit
+    type: transform
+    label: Download Dataverse deposit
+    parents: []
+    engine: r
+    code: code/steps/access_deposit.R
+    outputs:
+      - outputs/deposit/.manifest_applied
+
+  - id: prep_analysis_data
+    type: transform
+    label: Load and prepare analysis dataset
+    parents:
+      - access_deposit
+    inputs:
+      - outputs/deposit/Data/final_data.csv
+    outputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/steps/prep_analysis_data.R
+
+  - id: tab_3a
+    type: table
+    label: Table 3a — Summary statistics, Deportation vignette
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/tables/tab_3a.R
+    format: code/helpers/format_table.R
+    outputs:
+      - outputs/tab_3a.html
+    artifact: outputs/tab_3a.html
+
+  - id: tab_3b
+    type: table
+    label: Table 3b — Summary statistics, Quran burning and Eviction vignettes
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/tables/tab_3b.R
+    format: code/helpers/format_table.R
+    outputs:
+      - outputs/tab_3b.html
+    artifact: outputs/tab_3b.html
+
+  - id: fig_1
+    type: figure
+    label: Figure 1 — Treatment summaries
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_1.R
+    outputs:
+      - outputs/fig_1.png
+    artifact: outputs/fig_1.png
+
+  - id: fig_2a
+    type: figure
+    label: Figure 2a — Effect of EC disagreeing with domestic court (H1)
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_2a.R
+    outputs:
+      - outputs/fig_2a.png
+    artifact: outputs/fig_2a.png
+
+  - id: fig_2b
+    type: figure
+    label: Figure 2b — Effect of EC disagreeing with domestic court, by country
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_2b.R
+    outputs:
+      - outputs/fig_2b.png
+    artifact: outputs/fig_2b.png
+
+  - id: fig_2c
+    type: figure
+    label: Figure 2c — Effect of EC disagreeing with domestic court, by country (averaged over vignettes)
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_2c.R
+    outputs:
+      - outputs/fig_2c.png
+    artifact: outputs/fig_2c.png
+
+  - id: fig_3a
+    type: figure
+    label: Figure 3a — H1 heterogeneity by domestic rule-of-law satisfaction
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_3a.R
+    outputs:
+      - outputs/fig_3a.png
+    artifact: outputs/fig_3a.png
+
+  - id: fig_3b
+    type: figure
+    label: Figure 3b — H1 heterogeneity by domestic rule-of-law satisfaction (UK/Denmark only)
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_3b.R
+    outputs:
+      - outputs/fig_3b.png
+    artifact: outputs/fig_3b.png
+
+  - id: fig_3c
+    type: figure
+    label: Figure 3c — Difference in EC-disagreement effect by rule-of-law satisfaction (UK/Denmark only)
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_3c.R
+    outputs:
+      - outputs/fig_3c.png
+    artifact: outputs/fig_3c.png
+
+  - id: fig_4a
+    type: figure
+    label: Figure 4a — Effect of case outcome (H2)
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_4a.R
+    outputs:
+      - outputs/fig_4a.png
+    artifact: outputs/fig_4a.png
+
+  - id: fig_4b
+    type: figure
+    label: Figure 4b — Difference between case outcome effect and sovereignty effect
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_4b.R
+    outputs:
+      - outputs/fig_4b.png
+    artifact: outputs/fig_4b.png
+
+  - id: fig_5a
+    type: figure
+    label: Figure 5a — H2 interactions by sympathy toward applicant
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_5a.R
+    outputs:
+      - outputs/fig_5a.png
+    artifact: outputs/fig_5a.png
+
+  - id: fig_5b
+    type: figure
+    label: Figure 5b — Difference in outcome effect between sympathetic and unsympathetic respondents
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_5b.R
+    outputs:
+      - outputs/fig_5b.png
+    artifact: outputs/fig_5b.png
+
+  - id: fig_6
+    type: figure
+    label: Figure 6 — Heterogeneity by nationalism
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_6.R
+    outputs:
+      - outputs/fig_6.png
+    artifact: outputs/fig_6.png
+
+  - id: fig_7
+    type: figure
+    label: Figure 7 — Heterogeneity by authoritarianism
+    parents:
+      - prep_analysis_data
+    inputs:
+      - outputs/prep_analysis_data/analysis_data.rds
+    engine: r
+    code: code/figures/fig_7.R
+    outputs:
+      - outputs/fig_7.png
+    artifact: outputs/fig_7.png
