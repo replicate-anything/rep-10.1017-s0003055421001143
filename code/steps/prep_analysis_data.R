@@ -1,4 +1,4 @@
-source("code/helpers/study_paths.R", local = TRUE)
+source("../helpers/study_paths.R", local = TRUE)
 
 make_prep_analysis_data <- function(root = study_root()) {
   deposit_csv <- file.path(root, "outputs", "deposit", "Data", "final_data.csv")

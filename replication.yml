@@ -1,12 +1,14 @@
 maintainer:
-  name: 
-  email:
+  name: Macartan Humphreys
+  email: macartan.humphreys@wzb.eu
 
 collections:
   - APSR
 
 languages:
   - r
+
+repo: replicate-anything/rep-10.1017-s0003055421001143
 
 paper:
   doi: https://doi.org/10.1017/S0003055421001143
@@ -18,6 +20,7 @@ paper:
     - Erik Voeten
   journal: American Political Science Review
   year: 2021
+  study_folder: rep-10.1017-s0003055421001143
   dependencies:
     - dataverse
     - httr
@@ -42,7 +45,6 @@ steps:
   - id: access_deposit
     type: transform
     label: Download Dataverse deposit
-    parents: []
     engine: r
     code: code/steps/access_deposit.R
     outputs:
@@ -69,10 +71,14 @@ steps:
       - outputs/prep_analysis_data/analysis_data.rds
     engine: r
     code: code/tables/tab_3a.R
-    format: code/helpers/format_table.R
+    format: format_tab_3a
     outputs:
       - outputs/tab_3a.html
-    artifact: outputs/tab_3a.html
+
+  - id: tab_3a_format
+    type: format
+    parent: tab_3a
+    code: code/tables/tab_3a.R
 
   - id: tab_3b
     type: table
@@ -83,10 +89,14 @@ steps:
       - outputs/prep_analysis_data/analysis_data.rds
     engine: r
     code: code/tables/tab_3b.R
-    format: code/helpers/format_table.R
+    format: format_tab_3b
     outputs:
       - outputs/tab_3b.html
-    artifact: outputs/tab_3b.html
+
+  - id: tab_3b_format
+    type: format
+    parent: tab_3b
+    code: code/tables/tab_3b.R
 
   - id: fig_1
     type: figure
@@ -99,7 +109,6 @@ steps:
     code: code/figures/fig_1.R
     outputs:
       - outputs/fig_1.png
-    artifact: outputs/fig_1.png
 
   - id: fig_2a
     type: figure
@@ -112,7 +121,6 @@ steps:
     code: code/figures/fig_2a.R
     outputs:
       - outputs/fig_2a.png
-    artifact: outputs/fig_2a.png
 
   - id: fig_2b
     type: figure
@@ -125,7 +133,6 @@ steps:
     code: code/figures/fig_2b.R
     outputs:
       - outputs/fig_2b.png
-    artifact: outputs/fig_2b.png
 
   - id: fig_2c
     type: figure
@@ -138,7 +145,6 @@ steps:
     code: code/figures/fig_2c.R
     outputs:
       - outputs/fig_2c.png
-    artifact: outputs/fig_2c.png
 
   - id: fig_3a
     type: figure
@@ -151,7 +157,6 @@ steps:
     code: code/figures/fig_3a.R
     outputs:
       - outputs/fig_3a.png
-    artifact: outputs/fig_3a.png
 
   - id: fig_3b
     type: figure
@@ -164,7 +169,6 @@ steps:
     code: code/figures/fig_3b.R
     outputs:
       - outputs/fig_3b.png
-    artifact: outputs/fig_3b.png
 
   - id: fig_3c
     type: figure
@@ -177,7 +181,6 @@ steps:
     code: code/figures/fig_3c.R
     outputs:
       - outputs/fig_3c.png
-    artifact: outputs/fig_3c.png
 
   - id: fig_4a
     type: figure
@@ -190,7 +193,6 @@ steps:
     code: code/figures/fig_4a.R
     outputs:
       - outputs/fig_4a.png
-    artifact: outputs/fig_4a.png
 
   - id: fig_4b
     type: figure
@@ -203,7 +205,6 @@ steps:
     code: code/figures/fig_4b.R
     outputs:
       - outputs/fig_4b.png
-    artifact: outputs/fig_4b.png
 
   - id: fig_5a
     type: figure
@@ -216,7 +217,6 @@ steps:
     code: code/figures/fig_5a.R
     outputs:
       - outputs/fig_5a.png
-    artifact: outputs/fig_5a.png
 
   - id: fig_5b
     type: figure
@@ -229,7 +229,6 @@ steps:
     code: code/figures/fig_5b.R
     outputs:
       - outputs/fig_5b.png
-    artifact: outputs/fig_5b.png
 
   - id: fig_6
     type: figure
@@ -242,7 +241,6 @@ steps:
     code: code/figures/fig_6.R
     outputs:
       - outputs/fig_6.png
-    artifact: outputs/fig_6.png
 
   - id: fig_7
     type: figure
@@ -255,4 +253,3 @@ steps:
     code: code/figures/fig_7.R
     outputs:
       - outputs/fig_7.png
-    artifact: outputs/fig_7.png

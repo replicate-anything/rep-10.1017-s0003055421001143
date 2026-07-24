@@ -1,8 +1,8 @@
-source("code/helpers/study_paths.R", local = TRUE)
-source("code/helpers/outcome_labels.R", local = TRUE)
+source("../helpers/study_paths.R", local = TRUE)
+source("../helpers/outcome_labels.R", local = TRUE)
+source("../helpers/strat_reg.R", local = TRUE)
 
 make_fig_6 <- function(data = NULL, root = study_root()) {
-  source("code/helpers/strat_reg.R", local = TRUE)
   if (is.null(data)) data <- load_analysis_data()
   labels <- outcome_labels()
 

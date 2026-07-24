@@ -1,8 +1,17 @@
 {
-  "generated_at": "2026-07-21T09:25:45Z",
+  "generated_at": "2026-07-24T18:43:47Z",
   "folder": "10.1017_s0003055421001143",
   "doi": "10.1017/s0003055421001143",
-  "prep": [],
+  "prep": {
+    "access_deposit": {
+      "status": "cached",
+      "output": "outputs/deposit/.manifest_applied"
+    },
+    "prep_analysis_data": {
+      "status": "cached",
+      "output": "outputs/prep_analysis_data/analysis_data.rds"
+    }
+  },
   "replications": {
     "tab_3a": {
       "status": "ok",

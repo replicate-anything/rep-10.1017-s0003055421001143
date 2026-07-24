@@ -1,7 +1,6 @@
+source("../helpers/study_paths.R", local = TRUE)
+
 make_access_deposit <- function(root = study_root()) {
-  if (!requireNamespace("dataverse", quietly = TRUE)) {
-    stop("Install the dataverse package to fetch the deposit.", call. = FALSE)
-  }
   if (!requireNamespace("httr", quietly = TRUE)) {
     stop("Install the httr package to fetch the deposit.", call. = FALSE)
   }
@@ -41,9 +40,4 @@ make_access_deposit <- function(root = study_root()) {
 
   writeLines(format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ"), marker)
   invisible(marker)
-}
-
-if (sys.nframe() == 0L) {
-  source("code/helpers/study_paths.R", local = TRUE)
-  make_access_deposit()
 }

@@ -83,3 +83,5 @@ build_study_outputs("rep-10.1017-s0003055421001143", install_deps = TRUE)
 Appendix-only packages (`interflex`, `ggcorrplot`) are not required for the main-text MVP.
 
 ## Maintainer
+
+Macartan Humphreys <macartan.humphreys@wzb.eu>

@@ -3,18 +3,14 @@ study_root <- function() {
   normalizePath(root, winslash = "/", mustWork = FALSE)
 }
 
-`%||%` <- function(x, y) if (is.null(x) || length(x) == 0L || is.na(x)) y else x
-
-load_analysis_data <- function(root = study_root()) {
-  path <- file.path(root, "outputs", "prep_analysis_data", "analysis_data.rds")
-  if (!file.exists(path)) {
-    stop("Prepared analysis data not found at ", path, call. = FALSE)
+`%||%` <- function(x, y) {
+  if (is.null(x) || length(x) == 0L) {
+    return(y)
   }
-  readRDS(path)
-}
-
-output_path <- function(..., root = study_root()) {
-  file.path(root, ...)
+  if (length(x) == 1L && is.na(x)) {
+    return(y)
+  }
+  x
 }
 
 ensure_dir <- function(path) {
@@ -22,14 +18,18 @@ ensure_dir <- function(path) {
   invisible(path)
 }
 
-studies_output_path <- function() {
-  file.path(study_root(), "outputs", "prep_analysis_data", "analysis_data.rds")
+output_path <- function(..., root = study_root()) {
+  file.path(root, ...)
 }
 
-load_analysis_data <- function() {
-  path <- studies_output_path()
+studies_output_path <- function(root = study_root()) {
+  file.path(root, "outputs", "prep_analysis_data", "analysis_data.rds")
+}
+
+load_analysis_data <- function(root = study_root()) {
+  path <- studies_output_path(root = root)
   if (!file.exists(path)) {
-    stop("Run prep_studies first (missing ", path, ").", call. = FALSE)
+    stop("Run prep_analysis_data first (missing ", path, ").", call. = FALSE)
   }
   readRDS(path)
 }

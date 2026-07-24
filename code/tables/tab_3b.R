@@ -1,4 +1,4 @@
-source("code/helpers/study_paths.R")
+source("../helpers/study_paths.R")
 
 make_tab_3b <- function(data = NULL, root = study_root()) {
   if (is.null(data)) data <- load_analysis_data()
