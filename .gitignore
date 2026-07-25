@@ -6,6 +6,6 @@ outputs/staging/
 outputs/deposit/
 scratch/
 
-# Fetched analysis data (Pattern A / deposit cache); display artifacts stay committed.
-outputs/data/
+# Pattern B surgical fetch + prep products (display html/png stay committed)
+outputs/final_data.csv
 outputs/prep_analysis_data/

@@ -24,12 +24,12 @@ There is no separate `ReadMe.txt`; pipeline order is documented in the Rmd intro
 ## Step DAG (main text MVP)
 
 ```
-access_deposit → prep_analysis_data → tab_3, fig_1 … fig_7
+access_data → prep_analysis_data → tab_3, fig_1 … fig_7
 ```
 
 | Step | Author reference | Output |
 |------|------------------|--------|
-| `access_deposit` | Dataverse fetch | `outputs/deposit/Data/final_data.csv` |
+| `access_data` | Surgical Dataverse file `14008582` (`format=original`) | `outputs/final_data.csv` |
 | `prep_analysis_data` | Rmd chunks: read data, strata, cleaning, vignette | `outputs/prep_analysis_data/analysis_data.rds` |
 | `tab_3` | Table 3 — summary statistics | `outputs/tab_3.html` |
 | `fig_1` | Figure 1 — treatment summaries | `outputs/fig_1.png` |

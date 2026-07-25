@@ -37,26 +37,32 @@ dataverse:
   doi: https://doi.org/10.7910/DVN/WJQITU
   server: dataverse.harvard.edu
   dataset: "10.7910/DVN/WJQITU"
-  fetch: archive_original
-  manifest: manifest/dataverse_files.csv
-  deposit_root: outputs/deposit
+  # Pattern B surgical: one analysis CSV (not full archive zip)
+  file_id: "14008582"
+  original: true
+  # https://dataverse.harvard.edu/api/access/datafile/14008582?format=original
 
 steps:
-  - id: access_deposit
+  - id: access_data
     type: transform
-    label: Download Dataverse deposit
-    engine: r
-    code: code/steps/access_deposit.R
+    label: Access analysis data from Dataverse
+    description: >
+      Surgical download of final_data.csv (file 14008582, format=original)
+      into outputs/ — not a full DVN zip.
+    engine: dataverse
+    file_id: "14008582"
+    original: true
+    code: code/steps/access_data.R
     outputs:
-      - outputs/deposit/.manifest_applied
+      - outputs/final_data.csv
 
   - id: prep_analysis_data
     type: transform
     label: Load and prepare analysis dataset
     parents:
-      - access_deposit
+      - access_data
     inputs:
-      - outputs/deposit/Data/final_data.csv
+      - outputs/final_data.csv
     outputs:
       - outputs/prep_analysis_data/analysis_data.rds
     engine: r

@@ -1,12 +1,12 @@
 source("../helpers/study_paths.R", local = TRUE)
 
 make_prep_analysis_data <- function(root = study_root()) {
-  deposit_csv <- file.path(root, "outputs", "deposit", "Data", "final_data.csv")
-  if (!file.exists(deposit_csv)) {
-    stop("Run access_deposit first; missing ", deposit_csv, call. = FALSE)
+  csv_path <- file.path(root, "outputs", "final_data.csv")
+  if (!file.exists(csv_path)) {
+    stop("Run access_data first; missing ", csv_path, call. = FALSE)
   }
 
-  data <- readr::read_csv(deposit_csv, show_col_types = FALSE)
+  data <- readr::read_csv(csv_path, show_col_types = FALSE)
 
   data <- data |>
     dplyr::mutate(
