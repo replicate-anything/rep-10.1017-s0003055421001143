@@ -1,11 +1,7 @@
-.Rproj.user/
+﻿.Rproj.user/
 .Rhistory
 .RData
 *.log
 outputs/staging/
 outputs/deposit/
 scratch/
-
-# Pattern B surgical fetch + prep products (display html/png stay committed)
-outputs/final_data.csv
-outputs/prep_analysis_data/
